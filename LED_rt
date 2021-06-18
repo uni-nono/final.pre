@@ -1,0 +1,17 @@
+#include "stm32f10x.h"
+#include <rtthread.h>
+
+int main(void)
+{
+	RCC->APB2ENR = 0x0c;
+	
+	GPIOA->CRL = 0x44443333;
+	
+	while(1)
+	{
+		GPIOA->ODR = 0x00;
+		rt_thread_mdelay(100);
+		GPIOA->ODR = 0x01;// PA0输出（0x03 PA1输出）
+		rt_thread_mdelay(100);
+	}
+}
