@@ -1,0 +1,42 @@
+#include "stm32f10x.h"
+#include <rtthread.h>
+
+int main(void)
+{
+	RCC->APB2ENR = 0x0c;
+	
+	GPIOA->CRL = 0x44443333;
+	
+	while(1)
+	{
+		
+		GPIOA->ODR = 0x00;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x02;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x00;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x02;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x00;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x02;
+		rt_thread_mdelay(1000);
+		
+
+		GPIOA->ODR = 0x06;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x04;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x06;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x04;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x06;
+		rt_thread_mdelay(1000);
+		GPIOA->ODR = 0x04;
+		rt_thread_mdelay(1000);
+		
+	}
+	
+}
